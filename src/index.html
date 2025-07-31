@@ -23,9 +23,24 @@
       media="all"
     />
   </head>
-  <body class="text-white font-serif small-caps">
-    <video class="fixed w-screen h-screen object-cover" playsinline autoplay muted loop>
-      <source src="background.mp4" type="video/mp4" />
+  <body class="text-white font-serif small-caps bg-black">
+    <video
+      class="fixed w-screen h-screen object-cover portrait:hidden opacity-80"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
+      <source src="background-wide.mp4" type="video/mp4" />
+    </video>
+    <video
+      class="fixed w-screen h-screen object-cover hidden portrait:block opacity-80"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
+      <source src="background-tall.mp4" type="video/mp4" />
     </video>
 
     <div class="absolute w-full min-h-full">
@@ -37,18 +52,25 @@
       <div class="absolute inset-0 flex justify-center items-center">
         <div class="text-center">
           <div class="text-2xl md:text-3xl tracking-wide font-medium">
-            When I Change My Mind<br />I Don't Mean It
+            When I Change My Mind
+            <span class="portrait:hidden"> </span>
+            <br class="hidden portrait:block" />
+            I Don't Mean It
           </div>
           <div class="text-xl md:text-3xl tracking-wide mt-5 md:mt-15">The album</div>
           <div class="text-xl md:text-3xl tracking-wide">August 29th</div>
           <img class="max-w-220 md:max-w-300 inline-block mt-10 md:mt-25" src="album-art.png" />
           <div class="max-w-220 md:max-w-300 m-auto mt-15">
             <a
-              class="border px-15 py-5 text-md md:text-xl font-medium mt-5 flex justify-between items-center hover:bg-white hover:text-black transition"
-              href="https://presaves.sonymusicfans.com/?campaign_id=497052&mailing_list_ids=a0STy000000sXwfMAE&triggered_sends=&retargeting_consent=0&source_channel=Spotify"
+              class="border border-white px-15 py-5 text-md md:text-xl font-medium mt-5 flex justify-between items-center hover:bg-white hover:text-black transition rounded-sm"
+              href="https://presaves.sonymusicfans.com/?campaign_id=620959&mailing_list_ids=a0STy000005vDorMAE&triggered_sends=&retargeting_consent=0&source_channel=Spotify"
+              target="_blank"
               ><span class="fab fa-spotify"></span> Pre-Save on Spotify<span></span
             ></a>
-            <div id="container-apple-music" class="border mt-5 overflow-hidden">
+            <div
+              id="container-apple-music"
+              class="border border-white mt-5 overflow-hidden rounded-sm"
+            >
               <a
                 id="link-apple-music"
                 class="px-15 py-5 text-md md:text-xl font-medium flex justify-between items-center hover:bg-white hover:text-black transition"
@@ -71,7 +93,7 @@
                 </button>
               </form>
             </div>
-            <div class="mt-15 text-[10px] font-sans uppercase">
+            <div class="mt-15 text-[10px] font-sans uppercase leading-10">
               By connecting, you agree to pre-save and follow Chance Peña on Spotify, pre-add on
               Apple Music, and receive email communication from Chance Peña & Columbia Records.
             </div>
@@ -81,7 +103,9 @@
       <div class="absolute bottom-20 left-30">
         <a id="link-open-tour" class="text-3xl font-medium" href="#">Tour</a>
       </div>
-      <div class="absolute bottom-20 right-20 text-2xl flex flex-col gap-10 items-center">
+      <div
+        class="absolute bottom-20 right-20 text-xl md:text-2xl flex flex-col gap-10 items-center"
+      >
         <a href="https://www.facebook.com/chancepenamusic" target="_blank" title="Facebook"
           ><i class="fab fa-facebook"></i
         ></a>
@@ -165,31 +189,69 @@
         >Send&nbsp;Feedback</a
       >
     </div>
-
-    <script src="https://cdn.smehost.net/formssonymusicfanscom-appirioprod/apple-music/v1/amk.js"></script>
-    <script src="script.js" />
-
-    <!-- Google Tag Manager -->
-    <noscript>
-      <iframe
-        src="//www.googletagmanager.com/ns.html?id=GTM-WP7WV3"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
+    <script src="https://forms.sonymusicfans.com/apple-music/amk.js"></script>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "//www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WP7WV3");
+      var sm = new SMEAppleMusic({
+        ae: {
+          ae: "6f031bfdb1f3b11f33997bd5fbf79af9c610f313cdae47526986a5c48a00888d",
+          brand_id: "5310870",
+          segment_id: "2391264",
+          activities:
+            '{"actions":{"presave":179199},"mailing_list_optins":{"a0STy000005vDorMAE":179200}}',
+        },
+        am: {
+          dev_token: "",
+          save_mode: "library",
+          custom_playlist_name: "",
+          new_apple_presave: true,
+          resources: {
+            playlists: [],
+            albums: [],
+          },
+        },
+        sf: {
+          form: "620959",
+          default_mailing_list: "",
+        },
+        smf: {
+          campaign_id: "484774",
+          campaign_key: "333c4e8b19a72989caf8",
+        },
+      });
+
+      document.getElementById("link-apple-music").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById("link-apple-music").className = "hidden";
+        document.getElementById("form-apple-music").className =
+          "flex w-full h-[40px] overflow-hidden";
+        document.getElementById("input-email-address").focus();
+      });
+
+      document.getElementById("form-apple-music").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = document.getElementById("input-email-address").value;
+        sm.doActions(email, false, ["a0S1p00000TfUsBEAV"])
+          .then(function (res) {
+            window.open("/thanks");
+          })
+          .catch(function (err) {
+            // Error - handle your logic here.
+          });
+      });
+
+      document.getElementById("link-open-tour").addEventListener("click", function (e) {
+        console.log("open tour");
+        e.preventDefault();
+        document.getElementById("container-tour").className =
+          "fixed inset-0 bg-black/80 z-10 p-20 md:p-100 overflow-scroll";
+      });
+
+      document.getElementById("link-close-tour").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById("container-tour").className =
+          "fixed inset-0 bg-black/80 z-10 p-100 hidden";
+      });
     </script>
-    <!-- End Google Tag Manager -->
   </body>
 </html>
