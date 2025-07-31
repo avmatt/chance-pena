@@ -60,43 +60,19 @@
           <div class="text-xl md:text-3xl tracking-wide mt-5 md:mt-15">The album</div>
           <div class="text-xl md:text-3xl tracking-wide">August 29th</div>
           <img class="max-w-220 md:max-w-300 inline-block mt-10 md:mt-25" src="album-art.png" />
-          <div class="max-w-220 md:max-w-300 m-auto mt-15">
+          <div class="max-w-220 md:max-w-300 m-auto mt-10 text-center">
             <a
-              class="border border-white px-15 py-5 text-md md:text-xl font-medium mt-5 flex justify-between items-center hover:bg-white hover:text-black transition rounded-sm"
-              href="https://presaves.sonymusicfans.com/?campaign_id=620959&mailing_list_ids=a0STy000005vDorMAE&triggered_sends=&retargeting_consent=0&source_channel=Spotify"
+              class="block border border-white px-15 py-5 text-md md:text-xl font-medium mt-5 hover:bg-white hover:text-black transition rounded-sm"
+              href="https://chancepena.lnk.to/WhenIChangeMyMindIDontMeanIt"
               target="_blank"
-              ><span class="fab fa-spotify"></span> Pre-Save on Spotify<span></span
-            ></a>
-            <div
-              id="container-apple-music"
-              class="border border-white mt-5 overflow-hidden rounded-sm"
+              >Pre-order Now</a
             >
-              <a
-                id="link-apple-music"
-                class="px-15 py-5 text-md md:text-xl font-medium flex justify-between items-center hover:bg-white hover:text-black transition"
-                href="#"
-                ><span class="fab fa-apple"></span> Pre-Add on Apple Music<span></span
-              ></a>
-              <form id="form-apple-music" class="w-full h-[40px] overflow-hidden hidden">
-                <input
-                  id="input-email-address"
-                  type="text"
-                  class="w-full px-15 text-lg outline-0"
-                  placeholder="Email address"
-                  required
-                />
-                <button
-                  class="px-10 uppercase text-lg ml-auto cursor-pointer hover:bg-white hover:text-black transition"
-                  type="submit"
-                >
-                  Go
-                </button>
-              </form>
-            </div>
-            <div class="mt-15 text-[10px] font-sans uppercase leading-10">
-              By connecting, you agree to pre-save and follow Chance Peña on Spotify, pre-add on
-              Apple Music, and receive email communication from Chance Peña & Columbia Records.
-            </div>
+            <a
+              class="block border border-white px-15 py-5 text-md md:text-xl font-medium mt-5 hover:bg-white hover:text-black transition rounded-sm"
+              href="https://forms.sonymusicfans.com/campaign/cpwicmmimi/"
+              target="_blank"
+              >Pre-save Now</a
+            >
           </div>
         </div>
       </div>
@@ -189,57 +165,7 @@
         >Send&nbsp;Feedback</a
       >
     </div>
-    <script src="https://forms.sonymusicfans.com/apple-music/amk.js"></script>
-    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
     <script>
-      var sm = new SMEAppleMusic({
-        ae: {
-          ae: "6f031bfdb1f3b11f33997bd5fbf79af9c610f313cdae47526986a5c48a00888d",
-          brand_id: "5310870",
-          segment_id: "2391264",
-          activities:
-            '{"actions":{"presave":179199},"mailing_list_optins":{"a0STy000005vDorMAE":179200}}',
-        },
-        am: {
-          dev_token: "",
-          save_mode: "library",
-          custom_playlist_name: "",
-          new_apple_presave: true,
-          resources: {
-            playlists: [],
-            albums: [],
-          },
-        },
-        sf: {
-          form: "620959",
-          default_mailing_list: "",
-        },
-        smf: {
-          campaign_id: "484774",
-          campaign_key: "333c4e8b19a72989caf8",
-        },
-      });
-
-      document.getElementById("link-apple-music").addEventListener("click", function (e) {
-        e.preventDefault();
-        document.getElementById("link-apple-music").className = "hidden";
-        document.getElementById("form-apple-music").className =
-          "flex w-full h-[40px] overflow-hidden";
-        document.getElementById("input-email-address").focus();
-      });
-
-      document.getElementById("form-apple-music").addEventListener("submit", function (e) {
-        e.preventDefault();
-        var email = document.getElementById("input-email-address").value;
-        sm.doActions(email, false, ["a0S1p00000TfUsBEAV"])
-          .then(function (res) {
-            window.open("/thanks");
-          })
-          .catch(function (err) {
-            // Error - handle your logic here.
-          });
-      });
-
       document.getElementById("link-open-tour").addEventListener("click", function (e) {
         console.log("open tour");
         e.preventDefault();
