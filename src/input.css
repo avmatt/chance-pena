@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --spacing: 1px;
+  --font-serif: "EB Garamond", serif;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
